@@ -229,6 +229,7 @@ var util = $.extend(window.util || {}, {
         var c = lua.genLuaCall.apply(null, args);
         var defer = $.Deferred().done(success).fail(failure);
         lua.runLuaCode(thread, c, function (response) {
+            thread === 0 && console.warn('\t\t\t ==========', cmd, thread)
             try {
                 if (cmd === 'qn.GetPlayerInfo') {
                     response = response.replace(/\\\\/, 'dddddddddddd');
